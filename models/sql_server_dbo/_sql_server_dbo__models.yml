@@ -1,0 +1,17 @@
+
+models:
+  - name: promos
+    columns:
+      - name: promo_id      
+        data_tests:
+          - not_null
+          - relationships:
+                to: ref('stg_sql_server_dbo__promos')
+                field: promo_id  
+      - name: promo_name
+      - name: discount
+      - name: status
+      - name: deleted_data
+      - name: data_load
+        data_tests:
+          - not_null

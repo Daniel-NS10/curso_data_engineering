@@ -40,3 +40,12 @@ models:
     # Applies to all files under models/example/
     example:
       +materialized: table
+    google_sheets:
+      +materialized: view
+    sql_server_dbo:
+      +materialized: incremental
+
+seeds:
+  my_new_project:
+  +database: "ALUMNO11_DEV_BRONZE_DB"
+  +schema: "SEEDS"
