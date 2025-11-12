@@ -16,8 +16,10 @@ renamed_casted AS (
         md5(shipping_service) AS shipping_service_id,
         shipping_cost,
         address_id,
-        {{utc_changer(created_at) }} AS created_at_UTC,
+        {{utc_changer( created_at ) }} AS created_at_UTC,
         
+
+
 
         
         
@@ -27,10 +29,7 @@ renamed_casted AS (
         CONVERT_TIMEZONE('UTC',_fivetran_synced) AS data_load
         
     FROM src_sqlserver
-
-    UNION
-    -- anadir registro no_promo para que se puede garantizar la integridad referencial
-    SELECT md5 ('no_promo') AS promo_id, 'no_promo', 0 , 'active', null,   CONVERT_TIMEZONE('UTC',GETDATE()) AS data_load 
+    
     )
 
 SELECT * FROM renamed_casted
